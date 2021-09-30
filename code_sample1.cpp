@@ -6,7 +6,9 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
   int baseAddr=modules[modNumb];
   int unDef=-1;
 
-   if (addrMod=="I"){
+
+
+  if (addrMod=="I"){
     if (op<10000){
       result=op;
     }
@@ -14,13 +16,13 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
       err=4;
       result=9999;
     }
-
   }
+
+
+
   else if (addrMod=="E"){
     int newOperand=0;
-
     if (operand<usecount){
-
       result=opcode*1000;
       if (symbolTab.count(symLst[operand])<=0){
         result+=0;
@@ -40,7 +42,6 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
         if (position != used_Lst.end()){
           used_Lst.erase(position);
         }
-
         symbolErr[symLst[operand]]-=1;
       }
     }
@@ -49,6 +50,9 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
       result=op;
     }
   }
+
+
+
   else if (addrMod=="R"){
     if (modulesLen[modNumb]>operand){
       result=opcode*1000;
@@ -59,8 +63,10 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
       result+=baseAddr;
       err=1;
     }
-
   }
+
+
+
   else if (addrMod=="A"){
     if (operand<512){
       result=opcode*1000;
@@ -72,6 +78,9 @@ vector<int> resInstr(string addrMod, int op, int modNumb){
       result+=0;
     }
   }
+
+
+
   if (opcode>=10 && err==-1){
       err=5;
       result=9999;
